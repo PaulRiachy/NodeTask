@@ -11,7 +11,26 @@ const tableBody = document.getElementById("tableBody");
 const emptyMsg = document.getElementById("emptyMsg");
 
 let editingUserId = null;
+let authToken = null;
 
+async function getAuthToken() {
+  try {
+    const response = await fetch("/api/auth/token", {
+      method: "POST"
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Failed to get authentication token");
+    }
+
+    authToken = data.token;
+
+  } catch (error) {
+    console.error("Authentication error:", error);
+  }
+}
 
 function validateForm() {
   const firstname = firstNameInput.value.trim();
@@ -80,7 +99,15 @@ async function createUser(user) {
 
 async function getUsers() {
   try {
-    const response = await fetch(API_URL);
+    if (!authToken) {
+      await getAuthToken();
+    }
+
+    const response = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${authToken}`
+      }
+    });
 
     const users = await response.json();
 
@@ -140,10 +167,6 @@ function displayUsers(users) {
 }
 
 
-// ==============================
-// EDIT USER
-// ==============================
-
 async function editUser(id) {
   try {
     const response = await fetch(`${API_URL}/${id}`);
@@ -174,9 +197,6 @@ async function editUser(id) {
 }
 
 
-// ==============================
-// UPDATE USER - PUT
-// ==============================
 
 async function updateUser(id, userData) {
   try {
