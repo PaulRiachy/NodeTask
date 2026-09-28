@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <div class="container">
+
+    <h2>User Management</h2>
+
+    <form id="userForm">
+
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input
+          type="text"
+          id="firstName"
+          placeholder="Enter first name"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input
+          type="text"
+          id="lastName"
+          placeholder="Enter last name"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender">
+          <option value="" disabled selected hidden>
+            Select gender...
+          </option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob">
+      </div>
+
+      <button type="submit" id="saveBtn">
+        Save
+      </button>
+
+    </form>
+
+    <div class="table-container">
+
+      <h3>Saved Users</h3>
+
+      <table id="userTable">
+
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Date of Birth</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+
+        <tbody id="tableBody">
+        </tbody>
+
+      </table>
+
+      <p id="emptyMsg" class="empty-msg">
+        No users added yet.
+      </p>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
