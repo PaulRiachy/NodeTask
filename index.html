@@ -55,6 +55,55 @@
 
     </form>
 
+    <section class="profile-picture-section">
+      
+      <h2>User Profile Picture</h2>
+
+      <div class="profile-user-info">
+        <p>
+          <strong>User:</strong>
+          <span id="profileUserName">Select a user below</span>
+        </p>
+      </div>
+
+      <div class="profile-picture-preview">
+        <img
+          id="profilePicture"
+          src=""
+          alt="Profile Picture"
+          style="display: none;"
+        />
+
+        <p id="noProfilePicture">
+          No profile picture uploaded.
+        </p>
+      </div>
+
+      <div class="profile-upload-controls">
+        <select id="profileUserSelect">
+          <option value="">Select a user</option>
+        </select>
+
+        <input
+          type="file"
+          id="profilePictureInput"
+          accept=".jpg,.jpeg,.png,image/jpeg,image/png"
+        />
+
+        <button
+          type="button"
+          id="uploadProfilePictureBtn"
+        >
+          Upload
+        </button>
+      </div>
+
+      <p
+        id="profileUploadMessage"
+        style="display: none;"
+      ></p>
+    </section>
+
     <div class="table-container">
 
       <h3>Saved Users</h3>
